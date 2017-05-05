@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,19 +14,55 @@
         <p>Type your wish</p>
     </header>
 
-    <section id="title">
+    <footer id="space">
         <h1>TODO</h1>
-    </section>
+    </footer>
 
     <main>
         <form id="form" method="POST" action="#">
-            <label for="firstname">Title:</label>
-            <input id="firstname" type="text">
-
-            <label for="lastname">Comment:</label>
-            <input id="lastname" type="text">
-            <input type="submit">
+            <fieldset>
+                <label for="title">Title:</label>
+                <input id="title" type="text">
+            </fieldset>
+            <fieldset>
+                <label for="comment">Comment:</label>
+                <input id="comment" type="text">
+            </fieldset>
+            <input id="submit" type="submit">
     </main>
+
+    <footer id="list">
+        <h2>List</h2>
+        <section id="adding">
+
+        </section>
+    </footer>
+
+    <script>
+        let form = document.querySelector("form");
+        let x = 1
+        form.addEventListener("submit", function(e) {
+            let p = document.querySelector("#title").value;
+            let pp = document.querySelector("#comment").value;
+            let adding = document.querySelector("#adding");
+            let crarticle = document.createElement("article");
+            crarticle.innerHTML +=
+                "<article id='article" + x + "'>" +
+                "<pre id ='fill1'>" + p + "</pre>" +
+                "<pre id ='fill2'>" + "      " + pp + "</pre>" +
+                "<button id='bt" + x + "'>" + "Supr" + "</button>" +
+                "<pre>" + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + "</pre>" +
+                "</article>";
+            adding.appendChild(crarticle);
+            let bt = document.querySelector("#bt" + x);
+            let article = document.querySelector("#article" + x);
+            bt.addEventListener("click", function() {
+                article.remove();
+            })
+            x++;
+            e.preventDefault();
+        })
+    </script>
 </body>
 
 </html>
