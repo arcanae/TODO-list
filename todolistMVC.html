@@ -21,41 +21,47 @@
     </form>
     <button id="addtable">Add to table</button>
     <footer>
+        <table>
+        </table>
+        <section>
+
+        </section>
     </footer>
 
     <script>
         let form = document.querySelector("#form");
         let todo = document.querySelector("#todo");
         let comment = document.querySelector('#comment');
-        let footer = document.querySelector("footer");
+        let table = document.querySelector("table");
+        let section = document.querySelector("section");
         let array = [];
         let button = document.querySelector("#addtable");
         let supr;
 
         function display() {
-            table.remove();
-            let table = document.createElement("table");
+            table.innerHTML = "";
+            section.innerHTML = '';
             for (let i = 0; i < array.length; i++) {
-                table.innerHTML += "<tr>" + "<th>" + array[i] + "</th>" + "</tr>";
+                table.innerHTML = "<tr>" + "<th>" + array + "</th>" + "</tr>";
+                let tr = document.querySelector("tr");
+                supr = document.createElement("button");
+                supr.textContent = i;
+                section.appendChild(supr);
+                supr.addEventListener("click", function() {
+                    rm(i);
+                    display();
+                });
             }
-            footer.appendChild(table);
-            supr = document.createElement("button");
-            table.appendChild(supr);
-            supr.addEventListener("click", function() {
-                rm();
-                display();
-            });
 
         }
 
-        function add(var1, var2) {
-            var1 = todo.value;
-            var2 = comment.value;
-            array.push(var1, var2);
+        function add(var1) {
+            var1 = todo.value + "-" + comment.value;
+            array.push(var1);
         }
 
-        function rm() {
-            array.splice(0, 2);
+        function rm(i) {
+            array.splice(i, 1);
             supr.remove();
         }
 
