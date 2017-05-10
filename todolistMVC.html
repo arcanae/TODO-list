@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>todolist</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleMVC.css">
 
 </head>
 
@@ -18,28 +18,54 @@
         <label for="comment">comment:</label>
         <input id="comment" type="text">
         <input type="submit" id="submit">
-        <footer>
-            <table>
-            </table>
-        </footer>
     </form>
+    <button id="addtable">Add to table</button>
+    <footer>
+    </footer>
 
     <script>
-        let form = document.querySelector('#form');
-        let todo = document.querySelector('#todo');
+        let form = document.querySelector("#form");
+        let todo = document.querySelector("#todo");
         let comment = document.querySelector('#comment');
-        let table = document.querySelector("table");
-
-        let array = ["ga", "zo", "bu", "meu"];
+        let footer = document.querySelector("footer");
+        let array = [];
+        let button = document.querySelector("#addtable");
+        let supr;
 
         function display() {
+            table.remove();
+            let table = document.createElement("table");
             for (let i = 0; i < array.length; i++) {
-                let table = document.createElement("table");
-                table.innerHTML = "<tr>" + "<th>" + array[i] + "</th>" + "</tr>";
-                document.body.appendChild(table);
+                table.innerHTML += "<tr>" + "<th>" + array[i] + "</th>" + "</tr>";
             }
+            footer.appendChild(table);
+            supr = document.createElement("button");
+            table.appendChild(supr);
+            supr.addEventListener("click", function() {
+                rm();
+                display();
+            });
+
         }
+
+        function add(var1, var2) {
+            var1 = todo.value;
+            var2 = comment.value;
+            array.push(var1, var2);
+        }
+
+        function rm() {
+            array.splice(0, 2);
+            supr.remove();
+        }
+
+        button.addEventListener("click", function() {
+            add();
+            display();
+        });
+
         form.addEventListener("submit", function(e) {
+            e.preventDefault();
             let p = document.createElement('p');
             p.textContent = todo.value + " " + comment.value;
             document.body.appendChild(p);
@@ -48,16 +74,14 @@
             button.innerHTML = "Supr"
             document.body.appendChild(button);
 
-            let tr = document.createElement("tr");
-            tr.innerHTML = "<th>" + todo.value + " - " + comment.value + "</th>"
-            table.appendChild(tr);
+            // rm();
+
             button.addEventListener("click", function() {
                 p.remove();
                 button.remove();
-                tr.remove();
+                //tr.remove();
             });
 
-            e.preventDefault();
         });
     </script>
 </body>

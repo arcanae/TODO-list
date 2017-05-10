@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+    text-align: center;
+}
+
+table>tr {
+    background-color: lightblue;
+    border-bottom: 1px 1px;
+}
