@@ -29,6 +29,7 @@
                 <input id="comment" type="text">
             </fieldset>
             <input id="submit" type="submit">
+        </form>
     </main>
 
     <footer id="list">
@@ -42,26 +43,54 @@
         let form = document.querySelector("form");
         let x = 1
         form.addEventListener("submit", function(e) {
+            e.preventDefault();
             let p = document.querySelector("#title").value;
             let pp = document.querySelector("#comment").value;
             let adding = document.querySelector("#adding");
             let crarticle = document.createElement("article");
             crarticle.innerHTML +=
                 "<article id='article" + x + "'>" +
-                "<pre id ='fill1'>" + p + "</pre>" +
-                "<pre id ='fill2'>" + "      " + pp + "</pre>" +
+                "<pre id ='fillone" + x + "'>" + p + "</pre>" +
+                "<pre id ='filltwo" + x + "'>" + "      " + pp + "</pre>" +
+                "<input type='checkbox' id='check' value='check'>" +
                 "<button id='bt" + x + "'>" + "Supr" + "</button>" +
                 "<pre>" + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + "</pre>" +
                 "</article>";
             adding.appendChild(crarticle);
+            let fillone = document.querySelector("#fillone" + x);
+            let filltwo = document.querySelector("#filltwo" + x);
+            console.log(fillone);
+
+            // fillone.addEventListener("dblclick", function() {
+            //     let replace = document.createElement("input");
+            //     replace.id = "rep";
+            //     replace.type = "text";
+            //     fillone.replaceWith(replace);
+            //     let rep = document.querySelector("#rep");
+
+            //     rep.addEventListener("blur", function() {
+            //         let value = rep.value;
+            //         let rereplace = document.createElement("pre");
+            //         rereplace.id = 'fillone" + x + "';
+            //         rereplace.textContent = value;
+            //         replace.replaceWith(rereplace);
+            //     });
+            // });
+
+            fillone.addEventListener("dblclick", function() {
+                fillone.contentEditable = true;
+            });
+
+            filltwo.addEventListener("dblclick", function() {
+                filltwo.contentEditable = true;
+            });
             let bt = document.querySelector("#bt" + x);
             let article = document.querySelector("#article" + x);
             bt.addEventListener("click", function() {
                 article.remove();
-            })
+            });
             x++;
-            e.preventDefault();
-        })
+        });
     </script>
 </body>
 
