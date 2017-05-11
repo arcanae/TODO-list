@@ -11,21 +11,39 @@
 </head>
 
 <body>
-    <h1>ToDoList</h1>
+    <!--<h1>ToDoList</h1>
     <form method="POST" action="#" id="form">
         <label for="todo">todo:</label>
         <input id="todo" type="text">
         <label for="comment">comment:</label>
         <input id="comment" type="text">
         <input type="submit" id="submit">
-    </form>
-    <button id="addtable">Add to table</button>
+    </form>-->
+    <section id="space">
+        <h1>TODO</h1>
+    </section>
+
+    <main>
+        <form id="form" method="POST" action="#">
+            <fieldset>
+                <label for="todo">Title:</label>
+                <input id="todo" type="text">
+            </fieldset>
+            <fieldset>
+                <label for="comment">Comment:</label>
+                <input id="comment" type="text">
+            </fieldset>
+            <fieldset>
+                <button id="addtable">Add to table</button>
+            </fieldset>
+        </form>
+    </main>
     <footer>
         <table>
-        </table>
-        <section>
+            <section id="placetobutton">
 
-        </section>
+            </section>
+        </table>
     </footer>
 
     <script>
@@ -33,7 +51,8 @@
         let todo = document.querySelector("#todo");
         let comment = document.querySelector('#comment');
         let table = document.querySelector("table");
-        let section = document.querySelector("section");
+        let footer = document.querySelector("footer");
+        let section = document.querySelector("#placetobutton");
         let array = [];
         let button = document.querySelector("#addtable");
         let supr;
@@ -56,7 +75,7 @@
         }
 
         function add(var1) {
-            var1 = todo.value + "-" + comment.value;
+            var1 = todo.value + " - " + comment.value;
             array.push(var1);
         }
 
@@ -74,13 +93,13 @@
         // Exo 1 Todolist
         form.addEventListener("submit", function(e) {
             e.preventDefault();
-            let p = document.createElement('p');
-            p.textContent = todo.value + " " + comment.value;
-            document.body.appendChild(p);
+            let p = document.createElement('pre');
+            p.innerHTML = "<span id='test'>" + todo.value + "</span>" + " - " + comment.value;
+            footer.appendChild(p);
 
             let button = document.createElement('button');
             button.innerHTML = "Supr"
-            document.body.appendChild(button);
+            footer.appendChild(button);
 
             button.addEventListener("click", function() {
                 p.remove();
