@@ -94,7 +94,7 @@
         form.addEventListener("submit", function(e) {
             e.preventDefault();
             let p = document.createElement('pre');
-            p.innerHTML = "<span id='test'>" + todo.value + "</span>" + " - " + comment.value;
+            p.innerHTML = "<span class='test'>" + todo.value + "</span>" + " - " + comment.value;
             footer.appendChild(p);
 
             let button = document.createElement('button');

@@ -3,6 +3,7 @@ table {
     text-align: center;
     background-color: salmon;
     margin: 0.5em 0;
+    max-width: 750px;
 }
 
 table>tbody>tr {
@@ -38,7 +39,18 @@ h1 {
 }
 
 main {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-image: url("stripe.jpg");
+    max-width: 750px;
+    width: 100%;
 }
 
 fieldset {
@@ -51,10 +63,11 @@ pre {
     justify-content: center;
     background-color: lightblue;
     height: 2em;
+    max-width: 750px;
     width: 100%;
 }
 
-#test {
+.test {
     font-weight: bold;
 }
 
@@ -68,11 +81,6 @@ footer {
 #placetobutton {
     display: flex;
     justify-content: center;
-}
-
-#form {
-    display: flex;
-    flex-direction: column;
 }
 
 label {
