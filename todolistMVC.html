@@ -40,12 +40,11 @@
 
         function display() {
             table.innerHTML = "";
-            section.innerHTML = '';
+            section.innerHTML = "";
             for (let i = 0; i < array.length; i++) {
-                table.innerHTML = "<tr>" + "<th>" + array + "</th>" + "</tr>";
-                let tr = document.querySelector("tr");
+                table.innerHTML += "<tr>" + "<th>" + (i + 1) + ". " + array[i] + "</th>" + "</tr>";
                 supr = document.createElement("button");
-                supr.textContent = i;
+                supr.textContent = (i + 1);
                 section.appendChild(supr);
                 supr.addEventListener("click", function() {
                     rm(i);
@@ -80,12 +79,9 @@
             button.innerHTML = "Supr"
             document.body.appendChild(button);
 
-            // rm();
-
             button.addEventListener("click", function() {
                 p.remove();
                 button.remove();
-                //tr.remove();
             });
 
         });
